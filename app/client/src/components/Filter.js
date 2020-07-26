@@ -46,11 +46,9 @@ export default function Filter({ onFilterChange }) {
       }
       const res = await http.post(`/transaction`, data);
       if (res.status === 200) {
-        console.log('here')
         didAdd(true);
       } else {
         didAdd(false);
-        console.log('not here')
       }
     }
   };

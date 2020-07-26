@@ -4,7 +4,6 @@ import http from './helper/http-common'
 export default function Transactions({ transactions, onDel }) {
   let lastEditClicked;
   const edit = (val) => {
-    console.log(val.target.value);
     lastEditClicked = val.target.value;
     transactions.forEach(element => {
       if (element._id === val.target.value) {
@@ -21,9 +20,7 @@ export default function Transactions({ transactions, onDel }) {
 
   }
   const editconfirm = async () => {
-    console.log(lastEditClicked);
     const a = document.getElementsByClassName("dateEdit");
-    console.log(a[0].value);
     const date = a[0].value;
     let mes = date[0] + date[1] + date[2];
     const dia = date[4] + date[5];
@@ -41,11 +38,8 @@ export default function Transactions({ transactions, onDel }) {
     if (mes === "Nov") mes = 11;
     if (mes === "Dec") mes = 12;
     const b = document.getElementsByClassName("valueEdit");
-    console.log(parseInt(b[0].value));
     const c = document.getElementsByClassName("categoryEdit");
-    console.log(c[0].value);
     const d = document.getElementsByClassName("descriptionEdit");
-    console.log(d[0].value);
     let toEdit;
     transactions.forEach(element => {
       if (element._id === lastEditClicked) {
@@ -61,14 +55,11 @@ export default function Transactions({ transactions, onDel }) {
       "day": dia,
       "type": `${toEdit.type}`,
     }
-    console.log(data);
     const res = await http.patch(`/transaction/${lastEditClicked}`, data);
     if (res.status === 200) {
-      console.log('here')
       didEdit(true);
     } else {
       didEdit(false);
-      console.log('not here')
     }
   }
 
@@ -85,7 +76,6 @@ export default function Transactions({ transactions, onDel }) {
   const deleteOne = async (val) => {
 
     const idToDel = val.target.value;
-    console.log(idToDel);
     await http.delete(`/transaction/${idToDel}`);
     onDel(true);
   }

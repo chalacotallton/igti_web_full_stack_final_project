@@ -23,7 +23,7 @@ export default function App() {
     setFilterString(filtro);
     const newTransactions = [];
     const fetchPeriods = async () => {
-      const url = 'http://localhost:3001/api/transaction';
+      const url = '/api/transaction';
       const periodUrl = `${url}?period=${currentPeriod}`;
       const resource = await fetch(periodUrl);
       const json = await resource.json();
@@ -48,7 +48,7 @@ export default function App() {
 
   React.useEffect(() => {
     const fetchPeriods = async () => {
-      const url = 'http://localhost:3001/api/transaction';
+      const url = '/api/transaction';
       const periodUrl = `${url}?period=${currentPeriod}`;
       const resource = await fetch(periodUrl);
       const json = await resource.json();
