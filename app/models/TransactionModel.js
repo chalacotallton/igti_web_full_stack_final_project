@@ -10,6 +10,8 @@ let schema = mongoose.Schema({
   yearMonth: String,
   yearMonthDay: String,
   type: String,
+}, {
+  versionKey: false
 });
 
 const TransactionModel = mongoose.model('transaction', schema);

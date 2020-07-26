@@ -5,7 +5,7 @@ const TransactionService = require('../services/transactionService');
 
 transactionRouter.get('/', TransactionService.findPeriod);
 transactionRouter.post('/', TransactionService.addNew);
-transactionRouter.put('/', TransactionService.updateOne);
-transactionRouter.delete('/', TransactionService.deleteOne);
+transactionRouter.patch('/:id', TransactionService.updateOne);
+transactionRouter.delete('/:id', TransactionService.deleteOne);
 
 module.exports = transactionRouter;
